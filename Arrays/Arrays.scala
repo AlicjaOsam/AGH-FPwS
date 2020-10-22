@@ -31,11 +31,11 @@ object Arrays {
     T
   }
 
-  def Merge(arrx:Array[Array[Int]], arry:Array[Array[Int]]): Array[Array[Int]] ={
+  def Merge(arr1:Array[Array[Int]], arr2:Array[Array[Int]]): Array[Array[Int]] ={
     for ( i <- 0 to 3; j <- 0 to 4){
-      arry(i)(j)= arrx(i)(j)+arry(i)(j)
+      arr2(i)(j)= arr1(i)(j)+arr2(i)(j)
     }
-    arry
+    arr2
   }
 
   def main(args: Array[String]):Unit={
