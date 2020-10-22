@@ -1,10 +1,11 @@
 object PiPrint {
+  @scala.annotation.tailrec
+  def repN(n: Int, f: (Int)=> Int, x: Int):Int= {
+    if(n == 0) x
+    else repN(n-1, f, f(x))
+  }
   def pi = 3.1415
   def pi(pi : Double) = pi*3.1415
-  def repN(y: Int, x:Int=>Int, z:Int): Int ={
-    if (y != z) x(repN(y - 1, x, z))
-    else x(z)
-  }
 
   def main(args:Array[String]): Unit ={
     println(pi)
