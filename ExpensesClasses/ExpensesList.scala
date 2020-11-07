@@ -1,49 +1,21 @@
-import Expense._
-import scala.annotation.tailrec
-
-
-class ExpensesList {
-  var list: List[Expense] = Nil
-
-  def +=(other: Expense): Unit = list = list :+ other
-
   def printList(): Unit = {
-    pri(list)
-    @tailrec def pri(l: List[Expense]) {
-      if (l.isEmpty) { }
-      else {
-        println(l.head.amount, l.head.item_name, l.head.category)
-        pri(l.tail)
-      }
-    }
+    println(list.mkString("\n"))
   }
 
-  def sum(): Double = {
-    @tailrec def summar(l: List[Expense], s: Double) : Double={
-      if (l.isEmpty) { s }
-      else {
-        summar(l.tail, s + l.head.amount)
-      }
+  def sum: Double = {
+    var s = 0.0
+    for(i <- list){
+      s += i.amount
     }
-    summar(list, 0)
+    s
   }
 
-  def max(): String = {
-    @tailrec def maxim(l: List[Expense], lm: Expense): String={
-      if (l.isEmpty) { lm.item_name }
-      else if (l.head.amount > lm.amount) {
-        maxim(l.tail, l.head)
-      }
-      else {
-        maxim(l.tail, lm)
-      }
-    }
-    maxim(list, list.head)
+  def max(): Expense = {
+    val m: Expense => Double = element => element.amount
+    list.maxBy(m)
   }
 }
 
-  object ExpensesList{
-    def apply() = new ExpensesList
-  }
-
-
+object ExpensesList{
+  def apply() = new ExpensesList
+}
