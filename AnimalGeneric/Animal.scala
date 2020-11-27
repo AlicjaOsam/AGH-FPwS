@@ -1,4 +1,4 @@
-abstract class Animal {
+trait Animal {
   type T
   def eat(t: T)
 }
